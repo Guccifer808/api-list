@@ -5,7 +5,7 @@ import ListApi from './components/ListApi';
 import useAxios from './hooks/useAxios';
 
 function App() {
-  const { fetchData, response, loading } = useAxios('entries');
+  const { fetchData, response, loading, error } = useAxios('entries');
 
   useEffect(() => {
     fetchData({
@@ -28,6 +28,8 @@ function App() {
           categories={response.categories}
           response={response}
           loading={loading}
+          fetchData={fetchData}
+          error={error}
         />
         <ListApi response={response} loading={loading} />
       </div>

@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import useAxios, { AxiosData } from '../hooks/useAxios';
 
-import { AxiosError } from 'axios';
+import { AxiosError, AxiosResponse } from 'axios';
 interface FilterProps {
-  // fetchData: () => Promise<void>;
+  fetchData: () => Promise<void>;
   categories: string[];
   loading: boolean;
-  // error: AxiosError | null;
-  response: AxiosData | null;
+  error: AxiosError | any;
+  response: AxiosResponse<any> | AxiosData;
 }
 
-const Filters: React.FC<FilterProps> = ({ categories, response }) => {
+const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
   const {
     fetchData,
     response: { categories: fetchedCategories },
@@ -42,6 +42,12 @@ const Filters: React.FC<FilterProps> = ({ categories, response }) => {
       </div>
     );
   }
+
+  //filtering by button click
+  const handleClick = (e) => {
+    fetchAPI({ params: { category: e.target.value } });
+  };
+
   return (
     <div className='text-center my-4'>
       {/* {categories &&
@@ -59,6 +65,8 @@ const Filters: React.FC<FilterProps> = ({ categories, response }) => {
             <button
               className='bg-blue-500 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600 min-w-[115px]'
               key={category}
+              value={category}
+              onClick={handleClick}
             >
               {category}
             </button>
