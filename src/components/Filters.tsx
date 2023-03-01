@@ -63,6 +63,9 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
   };
   return (
     <div className='text-center my-4'>
+      <h3 className='font-semibold text-xl text-gray-700 text-center m-4'>
+        Categories
+      </h3>
       <div className='grid grid-cols-4 gap-2'>
         {fetchedCategories &&
           fetchedCategories
