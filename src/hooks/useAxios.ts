@@ -2,7 +2,8 @@ import { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 
 interface AxiosData {
-  [key: string]: any;
+  categories: string[];
+  entries: any[];
 }
 
 interface AxiosError {
@@ -38,3 +39,4 @@ const useAxios = (query: string): AxiosHook => {
 };
 
 export default useAxios;
+export type { AxiosData}

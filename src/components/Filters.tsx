@@ -1,11 +1,16 @@
 import { useEffect } from 'react';
-import useAxios from '../hooks/useAxios';
+import useAxios, { AxiosData } from '../hooks/useAxios';
 
+import { AxiosError } from 'axios';
 interface FilterProps {
+  // fetchData: () => Promise<void>;
   categories: string[];
+  loading: boolean;
+  // error: AxiosError | null;
+  response: AxiosData | null;
 }
 
-const Filters: React.FC<FilterProps> = ({ categories }) => {
+const Filters: React.FC<FilterProps> = ({ categories, response }) => {
   const {
     fetchData,
     response: { categories: fetchedCategories },
@@ -29,7 +34,14 @@ const Filters: React.FC<FilterProps> = ({ categories }) => {
       </div>
     );
   }
-
+  // Check for error
+  if (response instanceof Error) {
+    return (
+      <div className='text-center my-4'>
+        <p>{response.message}</p>
+      </div>
+    );
+  }
   return (
     <div className='text-center my-4'>
       {categories &&
