@@ -20,7 +20,7 @@ const ApiCard: React.FC<ApiCardProps> = ({ api }) => {
 
   return (
     <a href={api.Link} target='_blank' rel='noopener noreferrer'>
-      <div className='border-2 border-stone-100 p-2 text-gray-700 rounded-xl bg-stone-50 hover:border-purple-800 cursor-pointer h-full'>
+      <div className='border-2 border-stone-100 p-2 text-gray-700 rounded-md bg-stone-50 hover:border-purple-800 cursor-pointer h-full'>
         {renderInfo('Name', 'API')}
         {renderInfo('Category', 'Category')}
         {renderInfo('Description', 'Description')}

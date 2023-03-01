@@ -10,7 +10,7 @@ function App() {
   useEffect(() => {
     fetchData({
       params: {
-        category: ' ',
+        category: 'Open Source Projects',
       },
     });
   }, []);

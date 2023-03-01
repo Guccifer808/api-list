@@ -28,10 +28,10 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
   if (loading) {
     return (
       <div className='my-5 animate-pulse inline-block text-center'>
-        {[...Array(50).keys()].map((number) => (
+        {[...Array(10).keys()].map((number) => (
           <div
             key={`loading-${number.toString()}`}
-            className='h-7 w-24 bg-gray-300 m-1 rounded-sm inline-block'
+            className='h-7 w-20 bg-gray-300 m-1 rounded-md inline-block'
           ></div>
         ))}
       </div>
@@ -74,7 +74,7 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
             .slice(0, isExpanded ? fetchedCategories.length : displayCount)
             .map((category: string) => (
               <button
-                className='bg-blue-500 text-stone-50 py-2 m-0.5 px-2 text-sm font-semibold hover:bg-blue-600 min-w-[115px] rounded-md hover:scale-105 transform transition duration-150 ease-in-out'
+                className='bg-blue-500 text-stone-50 py-2 md:m-2 m-0.5 px-2 text-sm font-semibold hover:bg-blue-600 min-w-[115px] rounded-md hover:scale-105 transform transition duration-150 ease-in-out'
                 key={category}
                 value={category}
                 onClick={handleClick}

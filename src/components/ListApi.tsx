@@ -10,10 +10,10 @@ const ListApi: React.FC<ListApiProps> = ({ response, loading }) => {
   // Loading skeleton
   if (loading) {
     return (
-      <div className='mt-2 grid grid-cols-4 md:grid-cols-3 gap-4 animate-pulse'>
-        {[...Array(5).keys()].map((number) => (
+      <div className='mt-2 grid grid-cols-1 md:grid-cols-3 gap-4 animate-pulse'>
+        {[...Array(3).keys()].map((number) => (
           <div
-            className='h-28 w-full bg-gray-300 m-1 rounded-xl'
+            className='h-32 w-full bg-gray-300 m-1 rounded-xl'
             key={number}
           ></div>
         ))}
