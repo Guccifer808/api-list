@@ -69,7 +69,7 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
             .slice(0, isExpanded ? fetchedCategories.length : displayCount)
             .map((category: string) => (
               <button
-                className='bg-blue-500 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600 min-w-[115px]'
+                className='bg-blue-500 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600 min-w-[115px] rounded-md'
                 key={category}
                 value={category}
                 onClick={handleClick}
@@ -82,7 +82,7 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
         <>
           {displayCount < fetchedCategories.length && !isExpanded && (
             <button
-              className='bg-purple-800 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600 min-w-[115px] rounded-md'
+              className='bg-purple-800 text-stone-50 py-2 m-1 mt-4 px-2 hover:bg-blue-600 min-w-[115px] rounded-md'
               onClick={handleLoadMore}
             >
               Load More
@@ -90,7 +90,7 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
           )}
           {isExpanded && (
             <button
-              className='bg-purple-800 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600 min-w-[115px] rounded-md'
+              className='bg-purple-800 text-stone-50 py-2 m-1 mt-4 px-2 hover:bg-blue-600 min-w-[115px] rounded-md'
               onClick={handleHide}
             >
               Hide
