@@ -20,7 +20,7 @@ interface AxiosHook {
 }
 
 const useAxios = (query: string): AxiosHook => {
-  const [response, setResponse] = useState<AxiosData>({});
+  const [response, setResponse] = useState<AxiosData>({ categories: [], entries: [] });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<AxiosError | null>(null);
 
