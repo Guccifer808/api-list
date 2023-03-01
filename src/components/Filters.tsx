@@ -5,10 +5,10 @@ interface FilterProps {
   categories: string[];
 }
 
-const Filters: React.FC<FilterProps> = () => {
+const Filters: React.FC<FilterProps> = ({ categories }) => {
   const {
     fetchData,
-    response: { categories },
+    response: { categories: fetchedCategories },
     loading,
   } = useAxios('categories');
 
@@ -33,7 +33,13 @@ const Filters: React.FC<FilterProps> = () => {
   return (
     <div className='text-center my-4'>
       {categories &&
-        categories.map((category: string) => (
+        categories.map((category) => (
+          <button className='bg-blue-500 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600'>
+            {category}
+          </button>
+        ))}
+      {fetchedCategories &&
+        fetchedCategories.map((category: string) => (
           <button className='bg-blue-500 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600'>
             {category}
           </button>
