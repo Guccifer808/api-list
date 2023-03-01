@@ -10,7 +10,7 @@ const ListApi: React.FC<ListApiProps> = ({ response, loading }) => {
   // Loading skeleton
   if (loading) {
     return (
-      <div className='mt-2 grid md:grid-cols-3 gap-4 animate-pulse'>
+      <div className='mt-2 grid grid-cols-4 md:grid-cols-3 gap-4 animate-pulse'>
         {[...Array(5).keys()].map((number) => (
           <div
             className='h-28 w-full bg-gray-300 m-1 rounded-xl'
@@ -32,7 +32,7 @@ const ListApi: React.FC<ListApiProps> = ({ response, loading }) => {
       <h3 className='font-semibold text-xl text-gray-700 text-center m-4'>
         List of available APIs
       </h3>
-      <div className='grid gap-4 md:grid-col-3'>
+      <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
         {response &&
           response.entries?.map((api, index) => (
             <ApiCard key={index} api={api} />
