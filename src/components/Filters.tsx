@@ -3,7 +3,7 @@ import useAxios, { AxiosData } from '../hooks/useAxios';
 
 import { AxiosError, AxiosResponse } from 'axios';
 interface FilterProps {
-  fetchData: (params?: { category: string }) => Promise<void>;
+  fetchData: (config?: { params: { category: string } }) => Promise<void>;
   categories: string[];
   loading: boolean;
   error: AxiosError | any;
@@ -46,9 +46,8 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
   //filtering by button click
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     const category = e.currentTarget.value;
-    fetchAPI({ category });
+    fetchAPI({ params: { category } });
   };
-
   return (
     <div className='text-center my-4'>
       <div className='grid grid-cols-4 gap-2'>
