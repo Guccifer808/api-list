@@ -3,7 +3,7 @@ import useAxios, { AxiosData } from '../hooks/useAxios';
 
 import { AxiosError, AxiosResponse } from 'axios';
 interface FilterProps {
-  fetchData: () => Promise<void>;
+  fetchData: (params?: { category: string }) => Promise<void>;
   categories: string[];
   loading: boolean;
   error: AxiosError | any;
@@ -44,21 +44,13 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
   }
 
   //filtering by button click
-  const handleClick = (e) => {
-    fetchAPI({ params: { category: e.target.value } });
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const category = e.currentTarget.value;
+    fetchAPI({ category });
   };
 
   return (
     <div className='text-center my-4'>
-      {/* {categories &&
-        categories.map((category) => (
-          <button
-            className='bg-blue-500 text-stone-50 rounded-xl py-2 m-1 px-2 hover:bg-blue-600'
-            key={category}
-          >
-            {category}
-          </button>
-        ))} */}
       <div className='grid grid-cols-4 gap-2'>
         {fetchedCategories &&
           fetchedCategories.map((category: string) => (
