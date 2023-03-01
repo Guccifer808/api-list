@@ -16,7 +16,13 @@ function App() {
   }, []);
   return (
     <div className='App'>
-      <Header />
+      <Header
+        fetchData={fetchData}
+        params={{
+          title: '',
+        }}
+        title={''}
+      />
       <div className='mx-auto container max-w-4xl'>
         <Filters
           categories={response.categories}

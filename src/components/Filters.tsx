@@ -44,7 +44,7 @@ const Filters: React.FC<FilterProps> = ({ categories, response }) => {
   }
   return (
     <div className='text-center my-4'>
-      {categories &&
+      {/* {categories &&
         categories.map((category) => (
           <button
             className='bg-blue-500 text-stone-50 rounded-xl py-2 m-1 px-2 hover:bg-blue-600'
@@ -52,16 +52,18 @@ const Filters: React.FC<FilterProps> = ({ categories, response }) => {
           >
             {category}
           </button>
-        ))}
-      {fetchedCategories &&
-        fetchedCategories.map((category: string) => (
-          <button
-            className='bg-blue-500 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600'
-            key={category}
-          >
-            {category}
-          </button>
-        ))}
+        ))} */}
+      <div className='grid grid-cols-4 gap-2'>
+        {fetchedCategories &&
+          fetchedCategories.map((category: string) => (
+            <button
+              className='bg-blue-500 text-stone-50 py-2 m-1 px-2 hover:bg-blue-600 min-w-[115px]'
+              key={category}
+            >
+              {category}
+            </button>
+          ))}
+      </div>
     </div>
   );
 };

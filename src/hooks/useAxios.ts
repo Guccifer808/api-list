@@ -16,6 +16,7 @@ interface AxiosHook {
   response: AxiosData;
   loading: boolean;
   error: AxiosError | null;
+  
 }
 
 const useAxios = (query: string): AxiosHook => {
