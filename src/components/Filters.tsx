@@ -5,12 +5,12 @@ interface FilterProps {
   categories: string[];
 }
 
-const Filters = () => {
+const Filters: React.FC<FilterProps> = () => {
   const {
     fetchData,
     response: { categories },
     loading,
-  } = useAxios<FilterProps>('categories');
+  } = useAxios('categories');
 
   useEffect(() => {
     fetchData();
