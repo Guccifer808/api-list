@@ -6,4 +6,4 @@
 - TailwindCSS
 - [Public APIs](https://github.com/public-apis/public-apis)
 
-[Deployed](https://react-admin-dashboard-v1.vercel.app/)
+[Deployed](https://api-list-public.vercel.app/)
