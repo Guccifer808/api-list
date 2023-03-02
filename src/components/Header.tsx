@@ -5,8 +5,7 @@ interface FetchDataOptions {
     title: string;
   };
   title: string;
-  // fetchData: (params: { title: string }) => void;
-  fetchData: (params?: any) => Promise<void>;
+  fetchData: (params: { params: { title: string } }) => Promise<void>;
 }
 const Header: React.FC<FetchDataOptions> = ({ fetchData }) => {
   const [value, setValue] = useState('');
