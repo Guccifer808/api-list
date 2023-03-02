@@ -51,7 +51,7 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
     const category = e.currentTarget.value;
     fetchAPI({ params: { category } });
     setIsExpanded(false);
-    setDisplayCount(4); // Reset the number of buttons to display to initial state
+    setDisplayCount(3); // Reset the number of buttons to display to initial state
   };
   //load more button
   const handleLoadMore = () => {
@@ -87,7 +87,7 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
         <>
           {displayCount < fetchedCategories.length && !isExpanded && (
             <button
-              className='bg-purple-800 text-stone-50 py-2 m-1 mt-4 px-2 hover:bg-blue-600 min-w-[115px] rounded-md hover:scale-105 transform transition duration-150 ease-in-out'
+              className='bg-purple-800 font-semibold text-stone-50 py-2 m-1 mt-4 px-2 hover:bg-blue-600 min-w-[115px] rounded-md hover:scale-105 transform transition duration-150 ease-in-out'
               onClick={handleLoadMore}
             >
               Load More
