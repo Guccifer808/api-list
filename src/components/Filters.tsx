@@ -68,13 +68,13 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
       <h3 className='font-semibold text-xl text-gray-700 text-center m-4'>
         Filter Categories
       </h3>
-      <div className='grid grid-cols-3 gap-2'>
+      <div className='grid grid-cols-3 gap-2 px-2'>
         {fetchedCategories &&
           fetchedCategories
             .slice(0, isExpanded ? fetchedCategories.length : displayCount)
             .map((category: string) => (
               <button
-                className='bg-blue-500 text-stone-50 py-2 md:m-2 m-0.5 px-2 text-sm font-semibold hover:bg-blue-600 min-w-[115px] rounded-md hover:scale-105 transform transition duration-150 ease-in-out'
+                className='bg-blue-500 text-stone-50 md:m-2 m-0.5 p-2 text-sm font-semibold hover:bg-blue-600 min-w-[115px] rounded-md hover:scale-105 transform transition duration-150 ease-in-out'
                 key={category}
                 value={category}
                 onClick={handleClick}
