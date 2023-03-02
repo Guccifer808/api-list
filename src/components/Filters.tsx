@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import useAxios, { AxiosData } from '../hooks/useAxios';
 import { AxiosError, AxiosResponse } from 'axios';
 
-interface FilterProps {
+export interface FilterProps {
   fetchData: (config?: { params: { category: string } }) => Promise<void>;
   categories: string[];
   loading: boolean;

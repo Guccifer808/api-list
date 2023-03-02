@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import Filters from './components/Filters';
+import Filters, { FilterProps } from './components/Filters';
 import Header from './components/Header';
 import ListApi from './components/ListApi';
 import useAxios from './hooks/useAxios';
 
-function App() {
+const App: React.FC = () => {
   const { fetchData, response, loading, error } = useAxios('entries');
 
   useEffect(() => {
@@ -14,6 +14,15 @@ function App() {
       },
     });
   }, []);
+
+  const filtersProps: FilterProps = {
+    categories: response?.categories ?? [],
+    response,
+    loading,
+    fetchData,
+    error,
+  };
+
   return (
     <div className='App'>
       <Header
@@ -24,17 +33,11 @@ function App() {
         title={''}
       />
       <div className='mx-auto container max-w-4xl'>
-        <Filters
-          categories={response.categories}
-          response={response}
-          loading={loading}
-          fetchData={fetchData}
-          error={error}
-        />
+        <Filters {...filtersProps} />
         <ListApi response={response} loading={loading} />
       </div>
     </div>
   );
-}
+};
 
 export default App;
