@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-interface FetchDataOptions {
+export interface FetchDataOptions {
   params: {
     title: string;
   };
