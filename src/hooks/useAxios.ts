@@ -2,8 +2,9 @@ import { useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
 
 interface AxiosData {
-  categories: string[];
+  categories?: string[];
   entries: any[];
+
 }
 
 interface AxiosError {
