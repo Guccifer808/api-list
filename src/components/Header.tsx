@@ -7,19 +7,21 @@ export interface FetchDataOptions {
   title: string;
   fetchData: (params: { params: { title: string } }) => Promise<void>;
 }
+
 const Header: React.FC<FetchDataOptions> = ({ fetchData }) => {
   const [value, setValue] = useState('');
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      fetchData({ params: { title: value } } as FetchDataOptions);
+      e.preventDefault();
+      fetchData({ params: { title: value } });
       setValue('');
     }
   };
 
   const handleClick = () => {
     if (value.length) {
-      fetchData({ params: { title: value } } as FetchDataOptions);
+      fetchData({ params: { title: value } });
       setValue('');
     }
   };

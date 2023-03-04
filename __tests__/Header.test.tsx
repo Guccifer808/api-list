@@ -5,50 +5,41 @@ import '@testing-library/jest-dom';
 import Header, { FetchDataOptions } from '../src/components/Header';
 
 describe('Header component', () => {
-  const mockFetchData = jest.fn((params: { params: { title: string } }) =>
-    Promise.resolve()
-  );
+  const mockFetchData = jest.fn();
+  const options: FetchDataOptions = {
+    params: {
+      title: '',
+    },
+    title: 'Search for public APIs',
+    fetchData: mockFetchData,
+  };
 
-  it('renders the component', () => {
-    render(
-      <Header fetchData={mockFetchData} params={{ title: '' }} title='' />
-    );
-    const headerElement = screen.getByText(/Search for public APIs/i);
-    expect(headerElement).toBeInTheDocument();
+  beforeEach(() => {
+    render(<Header {...options} />);
   });
 
-  it('calls fetchData on search button click', () => {
-    const searchTitle = 'test';
-    render(
-      <Header fetchData={mockFetchData} params={{ title: '' }} title='' />
-    );
-    const searchInput = screen.getByPlaceholderText(
-      /Find your API/i
-    ) as HTMLInputElement;
-    fireEvent.change(searchInput, { target: { value: searchTitle } });
-    const searchButton = screen.getByRole('button');
-    fireEvent.click(searchButton);
-    const expectedParams: FetchDataOptions['params'] = { title: searchTitle };
+  it('should render the component', () => {
+    expect(screen.getByText(options.title)).toBeInTheDocument();
+  });
+
+  it('should call fetchData when enter key is pressed in the input field', () => {
+    const input = screen.getByPlaceholderText('Find your API');
+    const searchValue = 'test';
+    fireEvent.change(input, { target: { value: searchValue } });
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     expect(mockFetchData).toHaveBeenCalledWith({
-      params: expectedParams,
-      title: '',
+      params: { title: searchValue },
     });
   });
 
-  it('calls fetchData on enter key press', () => {
-    const searchTitle = 'test';
-    render(
-      <Header fetchData={mockFetchData} params={{ title: '' }} title='' />
-    );
-    const searchInput = screen.getByPlaceholderText(
-      /Find your API/i
-    ) as HTMLInputElement;
-    fireEvent.change(searchInput, { target: { value: searchTitle } });
-    fireEvent.keyDown(searchInput, { key: 'Enter', code: 'Enter' });
-    const expectedParams: FetchDataOptions['params'] = { title: searchTitle };
+  it('should call fetchData when button is clicked', () => {
+    const input = screen.getByPlaceholderText('Find your API');
+    const searchValue = 'test';
+    fireEvent.change(input, { target: { value: searchValue } });
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
     expect(mockFetchData).toHaveBeenCalledWith({
-      params: expectedParams,
-      title: '',
+      params: { title: searchValue },
     });
   });
 });
