@@ -6,7 +6,14 @@ interface AxiosData {
   entries: any[];
 
 }
-
+interface ApiEntry {
+  api: string;
+  description: string;
+  auth: string;
+  cors: string;
+  category: string;
+  link: string;
+}
 interface AxiosError {
   message: string;
   [key: string]: any;

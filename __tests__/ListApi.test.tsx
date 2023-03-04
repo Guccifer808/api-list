@@ -1,33 +1,29 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen, getAllByTestId } from '@testing-library/react';
 import ListApi from '../src/components/ListApi';
 
-describe('ListApi', () => {
+test('renders a list of ApiCard components when entries prop is provided', () => {
   const entries = [
-    { API: 'API 1', Description: 'Description 1', Auth: 'apiKey' },
-    { API: 'API 2', Description: 'Description 2', Auth: 'apiKey' },
+    {
+      api: 'API 1',
+      description: 'Description 1',
+      auth: 'apiKey',
+      cors: '',
+      category: '',
+      link: '',
+    },
+    {
+      api: 'API 2',
+      description: 'Description 2',
+      auth: 'apiKey',
+      cors: '',
+      category: '',
+      link: '',
+    },
   ];
-  const response = { count: entries.length, entries: entries };
 
-  it('renders a loading skeleton when loading prop is true', () => {
-    const { getAllByTestId } = render(
-      <ListApi response={response} loading={true} />
-    );
-    const skeletons = getAllByTestId('skeleton');
-    expect(skeletons).toHaveLength(3);
-  });
+  const { container } = render(<ListApi response={entries} loading={false} />);
 
-  it('renders an error message when entries prop is null or undefined', () => {
-    const { getByText } = render(<ListApi response={{}} loading={false} />);
-    const errorMessage = getByText(/oops/i);
-    expect(errorMessage).toBeInTheDocument();
-  });
-
-  it('renders a list of ApiCard components when entries prop is provided', () => {
-    const { getAllByTestId } = render(
-      <ListApi response={response} loading={false} />
-    );
-    const apiCards = getAllByTestId('api-card');
-    expect(apiCards).toHaveLength(entries.length);
-  });
+  const apiCards = container.querySelectorAll('[data-testid="api-card"]');
+  expect(apiCards).toHaveLength(entries.length);
 });

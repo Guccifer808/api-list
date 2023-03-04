@@ -56,6 +56,7 @@ const Filters: React.FC<FilterProps> = ({ fetchData: fetchAPI, response }) => {
   //load more button
   const handleLoadMore = () => {
     setDisplayCount(displayCount + (fetchedCategories?.length ?? 0)); // Increment the number of buttons to display
+    //set the default value of fetchedCategories to an empty array ([]) if it is undefined, so that you can safely access its length property without causing an error
     setIsExpanded(true);
   };
   //hide button
