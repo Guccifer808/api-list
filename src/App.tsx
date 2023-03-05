@@ -24,11 +24,7 @@ const App: React.FC = () => {
       <Header fetchData={fetchData} params={{ title: '' }} title={''} />
       <div className='mx-auto container max-w-4xl'>
         <Filters {...filterProps} />
-        {loading ? (
-          <div>Loading...</div>
-        ) : (
-          <ListApi response={response} loading={loading || !response} />
-        )}
+        <ListApi response={response} loading={loading || !response} />
       </div>
     </div>
   );
