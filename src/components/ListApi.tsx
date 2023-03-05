@@ -1,4 +1,4 @@
-import useAxios, { AxiosData } from '../hooks/useAxios';
+import { AxiosData } from '../hooks/useAxios';
 import ApiCard from './ApiCard';
 
 interface ListApiProps {

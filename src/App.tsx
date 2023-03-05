@@ -8,14 +8,10 @@ const App: React.FC = () => {
   const { fetchData, response, loading, error } = useAxios('entries');
 
   useEffect(() => {
-    fetchData({
-      params: {
-        category: 'Open Source Projects',
-      },
-    });
+    fetchData({ params: { category: 'Open Source Projects' } });
   }, []);
 
-  const filtersProps: FilterProps = {
+  const filterProps: FilterProps = {
     categories: response?.categories ?? [],
     response,
     loading,
@@ -25,16 +21,14 @@ const App: React.FC = () => {
 
   return (
     <div className='App'>
-      <Header
-        fetchData={fetchData}
-        params={{
-          title: '',
-        }}
-        title={''}
-      />
+      <Header fetchData={fetchData} params={{ title: '' }} title={''} />
       <div className='mx-auto container max-w-4xl'>
-        <Filters {...filtersProps} />
-        <ListApi response={response} loading={loading} />
+        <Filters {...filterProps} />
+        {loading ? (
+          <div>Loading...</div>
+        ) : (
+          <ListApi response={response} loading={loading || !response} />
+        )}
       </div>
     </div>
   );
