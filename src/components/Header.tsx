@@ -16,6 +16,7 @@ const Header: React.FC<FetchDataOptions> = ({ fetchData }) => {
       e.preventDefault();
       fetchData({ params: { title: value } });
       setValue('');
+      e.currentTarget.blur(); // hide the keyboard
     }
   };
 
