@@ -1,14 +1,16 @@
 import React from 'react';
 
+interface Api {
+  API: string;
+  Category: string;
+  Description: string;
+  Auth: string;
+  Cors: string;
+  Link: string;
+}
+
 type ApiCardProps = {
-  api: {
-    API: string;
-    Category: string;
-    Description: string;
-    Auth: string;
-    Cors: string;
-    Link: string;
-  };
+  api: Api;
 };
 
 const ApiCard: React.FC<ApiCardProps> = ({ api }) => {

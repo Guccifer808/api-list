@@ -31,7 +31,7 @@ const useAxios = (query: string): AxiosHook => {
   const fetchData = async (params?: AxiosRequestConfig<any>): Promise<void> => {
     try {
       setLoading(true);
-      const result: AxiosResponse = await axios.get(`https://api.publicapis.org/${query}`, params);
+      const result: AxiosResponse<AxiosData> = await axios.get(`https://api.publicapis.org/${query}`, params);
       setResponse(result.data);
     } catch (err: AxiosError | any) {
       setError(err.response?.data || { message: err.message });

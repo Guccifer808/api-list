@@ -33,10 +33,9 @@ const ListApi: React.FC<ListApiProps> = ({ response, loading }) => {
         List of available APIs
       </h3>
       <div className='grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3'>
-        {response &&
-          response.entries?.map((api, index) => (
-            <ApiCard key={index} api={api} />
-          ))}
+        {response.entries?.map((api, index) => (
+          <ApiCard key={index} api={api} />
+        ))}
       </div>
     </div>
   );
